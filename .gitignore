@@ -4,6 +4,10 @@
 dist
 tmp
 /out-tsc
+.vscode
+e2e
+/.vscode
+/e2e
 
 # dependencies
 node_modules
@@ -16,6 +20,9 @@ node_modules
 *.launch
 .settings/
 *.sublime-workspace
+.env
+.env-local
+
 
 # IDE - VSCode
 .vscode/*
