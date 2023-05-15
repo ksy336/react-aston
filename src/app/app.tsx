@@ -1,12 +1,15 @@
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-import styles from './app.module.scss';
-
-import NxWelcome from './nx-welcome';
+import React from 'react';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import HomePage from '../pages/HomePage/HomePage';
 
 export function App() {
   return (
-    <div>
-      <NxWelcome title="react-aston" />
+    <div className="wrapper">
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 }
