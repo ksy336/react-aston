@@ -4,7 +4,7 @@ import "./Button.scss";
 type ButtonProps = {
   children: ReactNode;
   onClick: () => void;
-  type: ReactNode;
+  type: string;
 }
 const Button = (props: ButtonProps) => {
   return (
