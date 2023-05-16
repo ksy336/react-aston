@@ -4,20 +4,26 @@ import Box from '@material-ui/core/Box';
 import TextField from '@material-ui/core/TextField';
 import Button from '../../components/Button/Button';
 import { useForm } from 'react-hook-form';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { Context } from '../../../store/context/context';
 
 const SignIn = () => {
-  const {handleSubmit, register, reset, formState: {errors}, watch} = useForm({mode: "onChange"});
+  const navigate = useNavigate();
+  const {handleSubmit, register, reset, formState: {errors}} = useForm({mode: "onChange"});
   const {login, password} = useContext(Context);
   const [confirmPassword, setConfirmPassword] = useState("");
-  const validatePassword = () => {
-    if(confirmPassword === password)
-      // return "Passwords do not match"
-      console.log("Success password");
-  }
+  const [confirmLogin, setConfirmLogin] = useState("");
+  const [isNotMatch, setIsNotMatch] = useState(false);
   const formSigninHandle = () => {
-
+    console.log(confirmPassword, password, confirmLogin, login)
+    if(confirmPassword === password && confirmLogin === login) {
+      console.log("Success password");
+      navigate("/movie");
+    } else {
+      console.log("Пароль или логин не совпадают")
+      setIsNotMatch(true);
+    }
+    reset()
   }
   return (
     <section className="registration-container">
@@ -33,9 +39,13 @@ const SignIn = () => {
                 fullWidth
                 autoFocus
                 autoComplete="Логин"
+                {...register("login", {
+                  required: "Введите логин",
+                  onChange: (e: React.ChangeEvent<HTMLInputElement>) => {setConfirmLogin(e.target.value)}
+                })}
               />
             </Box>
-            {/*{errors?.login && <div className="error-text">{errors?.login?.message}</div>}*/}
+            {errors?.login && <div className="error-text">{errors?.login?.message}</div>}
             <Box mb={2} className="input-block">
               <TextField
                 className="input-value"
@@ -46,13 +56,13 @@ const SignIn = () => {
                 type="password"
                 autoComplete="Пароль"
                 {...register("password", {
-                  required: "Введите пароль",
-                  onChange: (e: React.ChangeEvent<HTMLInputElement>) => {setConfirmPassword(e.target.value)},
-                  validate: validatePassword
+                  required: "Введите пароль, минимум 6 символов",
+                  onChange: (e: React.ChangeEvent<HTMLInputElement>) => {setConfirmPassword(e.target.value)}
                 })}
               />
             </Box>
-            {errors?.password && errors?.password.type === "validate" && <div className="error-text">Passwords do not match</div>}
+            {isNotMatch && <div className="error-text">Пароль или логин не совпадают</div>}
+            {errors?.password && <div className="error-text">{errors?.password.message}</div>}
             <div className="button-register">
               <Button type="submit">Войти</Button>
             </div>
