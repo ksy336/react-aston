@@ -1,11 +1,15 @@
 * {
   box-sizing: border-box;
 }
+html {
+  font-size: 14px;
+}
 body {
   background-image: url("./assets/d-a-v-i-d-s-o-n-l-u-n-a-KeGToDVN0l4-unsplash.jpg");
   background-size: cover;
   background-position: top;
   background-repeat: no-repeat;
+  font-family: 'Montserrat', sans-serif;
 }
 .wrapper {
   max-width: 1420px;
