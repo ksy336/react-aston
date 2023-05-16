@@ -1,33 +1,37 @@
-import { useEffect, useState } from 'react';
+import { createContext, useEffect, useState } from 'react';
 
 type ContextProps = {
   children: React.ReactNode;
 }
-const context = React.useContext(undefined);
+type LoginContextType = {
+  login: string;
+  password: string;
+}
+const Context = createContext<LoginContextType | null>(null);
 
 
 const ContextProvider = ({children}: ContextProps) => {
-  const [login, setLogin] = useState(""); // буду сохранять в LS + Context
+  const [login, setLogin] = useState("");
   const [password, setPassword] = useState("");
   useEffect(() => {
-    const loginData = JSON.parse(localStorage.getItem("login") as string);
+    const loginData = localStorage.getItem("login") as string;
     if (loginData) setLogin(loginData);
   }, []);
   useEffect(() => {
     JSON.stringify(localStorage.setItem("login", login));
   }, [login])
   useEffect(() => {
-    const passwordData = JSON.parse(localStorage.getItem("password") as string);
+    const passwordData = localStorage.getItem("password") as string;
     if (passwordData) setPassword(passwordData);
   }, []);
   useEffect(() => {
     JSON.stringify(localStorage.setItem("password", password));
   }, [password])
   return (
-    <ContextProvider value={{login, password}}>
+    <Context.Provider value={{login, password, setLogin, setPassword}}>
       {children}
-    </ContextProvider>
+    </Context.Provider>
   );
 };
 
-export {context, ContextProvider};
+export {Context, ContextProvider};

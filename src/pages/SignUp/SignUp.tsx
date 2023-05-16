@@ -1,11 +1,12 @@
-import React, { useState } from 'react';
+import React, { useContext } from 'react';
 import { Container } from '@material-ui/core';
 import Box from '@material-ui/core/Box';
 import TextField from '@material-ui/core/TextField';
 import Button from '../../components/Button/Button';
 import { useForm } from 'react-hook-form';
+import { useNavigate } from 'react-router-dom';
+import { Context } from '../../../store/context/context';
 import"./Signup.scss";
-import { useNavigate } from 'react-router';
 
 type FormData = {
   login: string;
@@ -15,9 +16,7 @@ type FormData = {
 const SignUp = () => {
   const {register, handleSubmit, formState: {errors}, reset} = useForm<FormData>({mode: "onChange"});
   const navigate = useNavigate();
-  // TODO: переместить в Сontext, реализовать сохранение в LS
-  // const [login, setLogin] = useState(""); // буду сохранять в LS + Context
-  // const [password, setPassword] = useState("");
+  const {setLogin, setPassword} = useContext(Context);
   const formSubmit = () => {
     navigate("/signin");
     reset();

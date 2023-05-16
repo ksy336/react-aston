@@ -40,7 +40,7 @@ const SignIn = () => {
             </Box>
             {/*{errors?.password && <div className="error-text">{errors?.password.message}</div>}*/}
             <div className="button-register">
-              <Button type="submit">Зарегистрироваться</Button>
+              <Button type="submit">Войти</Button>
             </div>
           </form>
         </Container>
