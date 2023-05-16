@@ -4,7 +4,7 @@ import Box from '@material-ui/core/Box';
 import TextField from '@material-ui/core/TextField';
 import Button from '../../components/Button/Button';
 import { useForm } from 'react-hook-form';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { Context } from '../../../store/context/context';
 import"./Signup.scss";
 
@@ -73,6 +73,7 @@ const SignUp = () => {
           </form>
         </Container>
       </div>
+      <div className="not-submit-text">Уже зарегистрированы? <Link to="/signin"> Войти</Link></div>
     </section>
   );
 };

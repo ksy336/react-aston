@@ -4,6 +4,7 @@ import HomePage from '../pages/HomePage/HomePage';
 import SignUp from '../pages/SignUp/SignUp';
 import SignIn from '../pages/SignIn/SignIn';
 
+
 export function App() {
   return (
     <div className="wrapper">
@@ -11,7 +12,7 @@ export function App() {
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/signup" element={<SignUp />} />
-          <Route path="/signin" elment={<SignIn />} />
+          <Route path="/signin" element={<SignIn />} />
         </Routes>
       </BrowserRouter>
     </div>
