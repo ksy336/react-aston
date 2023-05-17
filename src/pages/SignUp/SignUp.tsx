@@ -5,7 +5,7 @@ import TextField from '@material-ui/core/TextField';
 import Button from '../../components/Button/Button';
 import { useForm } from 'react-hook-form';
 import { Link, useNavigate } from 'react-router-dom';
-import { Context } from '../../../store/context/context';
+import { AuthorizationContext } from '../../../store/context/context';
 import"./Signup.scss";
 
 type FormData = {
@@ -16,7 +16,7 @@ type FormData = {
 const SignUp = () => {
   const {register, handleSubmit, formState: {errors}, reset} = useForm<FormData>({mode: "onChange"});
   const navigate = useNavigate();
-  const {setLogin, setPassword} = useContext(Context);
+  const {setLogin, setPassword} = useContext(AuthorizationContext);
   const formSubmit = () => {
     navigate("/signin");
     reset();

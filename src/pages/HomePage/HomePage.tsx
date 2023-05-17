@@ -1,11 +1,11 @@
 import React from 'react';
-import MemoizedHeader from '../../components/Header/Header';
+import Header from '../../components/Header/Header';
 
 
 const HomePage = () => {
   return (
     <>
-     <MemoizedHeader />
+     <Header />
     </>
   );
 };

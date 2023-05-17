@@ -1,14 +1,7 @@
 import { createContext, useEffect, useState } from 'react';
+import { ContextProps, LoginContextType } from './context-types';
 
-type ContextProps = {
-  children: React.ReactNode;
-}
-type LoginContextType = {
-  login: string;
-  password: string;
-}
-const Context = createContext<LoginContextType | null>(null);
-
+const AuthorizationContext = createContext<LoginContextType | null>(null);
 
 const ContextProvider = ({children}: ContextProps) => {
   const [login, setLogin] = useState("");
@@ -28,10 +21,10 @@ const ContextProvider = ({children}: ContextProps) => {
     JSON.stringify(localStorage.setItem("password", password));
   }, [password])
   return (
-    <Context.Provider value={{login, password, setLogin, setPassword}}>
+    <AuthorizationContext.Provider value={{login, password, setLogin, setPassword}}>
       {children}
-    </Context.Provider>
+    </AuthorizationContext.Provider>
   );
 };
 
-export {Context, ContextProvider};
+export {AuthorizationContext, ContextProvider};

@@ -5,25 +5,23 @@ import TextField from '@material-ui/core/TextField';
 import Button from '../../components/Button/Button';
 import { useForm } from 'react-hook-form';
 import { Link, useNavigate } from 'react-router-dom';
-import { Context } from '../../../store/context/context';
+import { AuthorizationContext } from '../../../store/context/context';
 
 const SignIn = () => {
   const navigate = useNavigate();
   const {handleSubmit, register, reset, formState: {errors}} = useForm({mode: "onChange"});
-  const {login, password} = useContext(Context);
+  const {login, password} = useContext(AuthorizationContext);
   const [confirmPassword, setConfirmPassword] = useState("");
   const [confirmLogin, setConfirmLogin] = useState("");
   const [isNotMatch, setIsNotMatch] = useState(false);
   const formSigninHandle = () => {
     console.log(confirmPassword, password, confirmLogin, login)
     if(confirmPassword === password && confirmLogin === login) {
-      console.log("Success password");
       navigate("/movie");
     } else {
-      console.log("Пароль или логин не совпадают")
       setIsNotMatch(true);
     }
-    reset()
+    reset();
   }
   return (
     <section className="registration-container">

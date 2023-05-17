@@ -5,7 +5,6 @@ import { Link } from 'react-router-dom';
 import "./Header.scss";
 
 const Header = () => {
-console.log(`Render Header component at ${new Date().toLocaleDateString()}`)
   return (
     <header className="header">
       <div className="logo">
@@ -26,5 +25,4 @@ console.log(`Render Header component at ${new Date().toLocaleDateString()}`)
     </header>
   );
 };
-const MemoizedHeader = React.memo(Header);
-export default MemoizedHeader;
+export default Header;
