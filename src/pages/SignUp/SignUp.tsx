@@ -1,11 +1,12 @@
-import React, { useState } from 'react';
+import React, { useContext } from 'react';
 import { Container } from '@material-ui/core';
 import Box from '@material-ui/core/Box';
 import TextField from '@material-ui/core/TextField';
-import Button from '../Button/Button';
+import Button from '../../components/Button/Button';
 import { useForm } from 'react-hook-form';
+import { Link, useNavigate } from 'react-router-dom';
+import { AuthorizationContext } from '../../../store/context/context';
 import"./Signup.scss";
-import { useNavigate } from 'react-router';
 
 type FormData = {
   login: string;
@@ -15,11 +16,10 @@ type FormData = {
 const SignUp = () => {
   const {register, handleSubmit, formState: {errors}, reset} = useForm<FormData>({mode: "onChange"});
   const navigate = useNavigate();
-  // TODO: переместить в Сontext, реализовать сохранение в LS
-  const [login, setLogin] = useState(""); // буду сохранять в LS + Context
-  const [password, setPassword] = useState("");
+  const {setLogin, setPassword} = useContext(AuthorizationContext);
   const formSubmit = () => {
     navigate("/signin");
+    reset();
   }
 
   return (
@@ -63,6 +63,7 @@ const SignUp = () => {
                   min: 8,
                   max: 14
                 })}
+                error={!!errors.password}
               />
             </Box>
             {errors?.password && <div className="error-text">{errors?.password.message}</div>}
@@ -72,6 +73,7 @@ const SignUp = () => {
           </form>
         </Container>
       </div>
+      <div className="not-submit-text">Уже зарегистрированы? <Link to="/signin"> Войти</Link></div>
     </section>
   );
 };

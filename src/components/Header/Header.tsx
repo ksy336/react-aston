@@ -5,7 +5,6 @@ import { Link } from 'react-router-dom';
 import "./Header.scss";
 
 const Header = () => {
-
   return (
     <header className="header">
       <div className="logo">
@@ -13,7 +12,9 @@ const Header = () => {
       </div>
       <div className="buttons-container">
         <div className="button-signin">
-          <Button>Вход</Button>
+          <Link to="/signin">
+            <Button>Вход</Button>
+          </Link>
         </div>
         <div className="button-signup">
           <Link to="/signup">
@@ -24,5 +25,4 @@ const Header = () => {
     </header>
   );
 };
-
 export default Header;
