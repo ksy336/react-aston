@@ -8,6 +8,11 @@ tmp
 e2e
 /.vscode
 /e2e
+.env-example
+.env
+/.env-example
+/.env
+.env.local
 
 # dependencies
 node_modules
