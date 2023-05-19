@@ -31,6 +31,11 @@ export default defineConfig({
   //    }),
   //  ],
   // },
+  // vite: {
+  //   define: {
+  //     "process.env.REACT_APP_API_KEY": process.env.ENV,
+  //   },
+  // },
 
   test: {
     globals: true,

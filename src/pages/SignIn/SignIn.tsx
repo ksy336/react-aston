@@ -14,8 +14,8 @@ const SignIn = () => {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [confirmLogin, setConfirmLogin] = useState("");
   const [isNotMatch, setIsNotMatch] = useState(false);
+
   const formSigninHandle = () => {
-    console.log(confirmPassword, password, confirmLogin, login)
     if(confirmPassword === password && confirmLogin === login) {
       navigate("/movie");
     } else {
