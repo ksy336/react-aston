@@ -1,0 +1,10 @@
+.movies-block {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+
+}
+.movies-block > * {
+  flex-basis: 31%;
+  margin-bottom: 20px;
+}

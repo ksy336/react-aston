@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import Header from '../../components/Header/Header';
 import moviesApi from '../../api/movies-api';
 import { MovieItem } from './MoviePage-Types';
+import Movie from '../../components/Movie/Movie';
+import "./MoviePage.scss";
 
 const MoviePage = () => {
   const [listMovies, setListMovies] = useState<MovieItem>();
@@ -18,6 +20,14 @@ const MoviePage = () => {
   return (
     <>
       <Header />
+      <section className="movies-block">
+        {listMovies?.map((movie: MovieItem) => (
+          <Movie
+            key={movie.id}
+            movie={movie}
+          />
+        ))}
+      </section>
     </>
   );
 };
