@@ -21,7 +21,7 @@ const MoviePage = () => {
     <>
       <Header />
       <section className="movies-block">
-        {listMovies?.map((movie: MovieItem) => (
+        {listMovies?.map((movie) => (
           <Movie
             key={movie.id}
             movie={movie}
