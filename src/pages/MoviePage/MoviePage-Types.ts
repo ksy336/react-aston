@@ -1,4 +1,4 @@
-export interface ImovieItem {
+export interface MovieItem {
   adult?: boolean;
   backdropPath: string;
   id: number;

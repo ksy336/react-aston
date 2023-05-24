@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import Header from '../../components/Header/Header';
 import moviesApi from '../../api/movies-api';
-import { ImovieItem } from './MoviePage-Types';
+import { MovieItem } from './MoviePage-Types';
+import Movie from '../../components/Movie/Movie';
+import "./MoviePage.scss";
 
 const MoviePage = () => {
-  const [listMovies, setListMovies] = useState<ImovieItem>();
+  const [listMovies, setListMovies] = useState<MovieItem>();
   const [page, setPage] = useState(1);
   // TODO сделать пагинацию
   const fetchDataFromApi = async () => {
@@ -18,6 +20,14 @@ const MoviePage = () => {
   return (
     <>
       <Header />
+      <section className="movies-block">
+        {listMovies?.map((movie) => (
+          <Movie
+            key={movie.id}
+            movie={movie}
+          />
+        ))}
+      </section>
     </>
   );
 };
