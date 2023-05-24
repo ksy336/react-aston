@@ -1,5 +1,5 @@
 import React from 'react';
-import logo from "../../assets/free-icon-video-camera-10519540.jpg";
+import logo from "../../assets/film.png";
 import Button from '../Button/Button';
 import { Link } from 'react-router-dom';
 import "./Header.scss";
