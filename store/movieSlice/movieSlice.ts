@@ -9,8 +9,8 @@ export const movieSlice = createSlice({
   name: "movies",
   initialState,
   reducers: {
-    addToFavorites(state, action) {
-      state.favorites = [...state, action];
+    addToFavoritesList(state, action) {
+      state.favorites = [...state.favorites, action];
       state.numberOfFavorites += 1;
     },
     removeFromFavorites(state, action) {
@@ -20,5 +20,5 @@ export const movieSlice = createSlice({
     }
   }
 });
-export const {addToFavorites, removeFromFavorites} = movieSlice.actions;
+export const { removeFromFavorites, addToFavoritesList} = movieSlice.actions;
 export default movieSlice.reducer;
