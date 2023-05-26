@@ -1,9 +1,12 @@
 import React from 'react';
 import { MovieItem } from '../../pages/MoviePage/MoviePage-Types';
 import image from "../../assets/favourites.svg";
-import { useDispatch } from 'react-redux';
+import redHeart from "../../assets/heart2.svg";
+import { useDispatch, useSelector } from 'react-redux';
 import { addToFavoritesList }  from "../../../store/movieSlice/movieSlice";
+import { removeFromFavorites } from "../../../store/movieSlice/movieSlice";
 import "./Movie.scss";
+import { RootState } from '../../../store/store-types';
 
 type MovieProp = {
   movie: MovieItem;
@@ -11,7 +14,8 @@ type MovieProp = {
 
 const Movie = ({movie}: MovieProp) => {
   const dispatch = useDispatch();
-
+  const {favorites} = useSelector((state: RootState) => state.movies);
+  
   return (
     <article className="movie-container">
       <div className="movie-title">{movie.title}</div>
@@ -21,16 +25,27 @@ const Movie = ({movie}: MovieProp) => {
       <div>Популярность: {movie.popularity}</div>
       <div>Дата релиза: {movie.release_date}</div>
       <div>Средний рейтинг: {movie.vote_average}</div>
-      <img
-        src={image}
-        alt="favorite"
-        width="40"
-        height="40"
-        className="favorite-img"
-        onClick={() => dispatch(addToFavoritesList(movie))}
-      />
+      {!favorites?.includes(movie) ? (
+        <img
+          src={image}
+          alt="favorite"
+          width="40"
+          height="40"
+          className="favorite-img"
+          onClick={() => dispatch(addToFavoritesList(movie))}
+        />
+      ) : (
+        <img
+          src={redHeart}
+          alt="favorite"
+          width="40"
+          height="40"
+          className="favorite-img"
+          onClick={() => dispatch(removeFromFavorites(movie))}
+        />
+      )}
     </article>
   );
 };
-
-export default Movie;
+const MovieMemo = React.memo(Movie);
+export default MovieMemo;

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import logo from "../../assets/film.png";
 import Button from '../Button/Button';
 import { Link } from 'react-router-dom';
@@ -6,9 +6,12 @@ import image from "../../assets/heart.svg";
 import "./Header.scss";
 import { useSelector } from 'react-redux';
 import { RootState } from '../../../store/store-types';
+import { AuthorizationContext } from '../../../store/context/context';
 
 const Header = () => {
   const { numberOfFavorites } = useSelector((state: RootState) => state.movies);
+  const { login, password } = useContext(AuthorizationContext);
+
   return (
     <header className="header">
       <div className="logo">
@@ -16,6 +19,13 @@ const Header = () => {
       </div>
       {/*// TODO Избранное и история всегда видны как две кнопки в хэдере -> но роуты будут приватные - с хуком useAuth*/}
           <div className="buttons-container">
+            {(login && password) && (
+              <div className="button-signin">
+                <Link to="/signin">
+                  <Button>Выход</Button>
+                </Link>
+              </div>
+            )}
             <div className="button-signin">
               <Link to="/signin">
                 <Button>Вход</Button>
@@ -35,7 +45,14 @@ const Header = () => {
                   height="40"
                   className="favorite-img"
                 />
-                <span className="heart-number">{numberOfFavorites}</span>
+                <span className="heart-container">
+                  <span className="heart-number">{numberOfFavorites}</span>
+                </span>
+              </div>
+            </Link>
+            <Link to="/history">
+              <div className="history">
+               История
               </div>
             </Link>
           </div>
