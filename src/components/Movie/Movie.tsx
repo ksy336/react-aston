@@ -15,7 +15,7 @@ type MovieProp = {
 const Movie = ({movie}: MovieProp) => {
   const dispatch = useDispatch();
   const {favorites} = useSelector((state: RootState) => state.movies);
-  
+
   return (
     <article className="movie-container">
       <div className="movie-title">{movie.title}</div>

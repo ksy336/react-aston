@@ -3,14 +3,14 @@ import { MovieState } from './movieSlice-types';
 
 const initialState: MovieState = {
   favorites: [],
-  numberOfFavorites: 0
+  numberOfFavorites: 0,
+  // user: {}
 }
 export const movieSlice = createSlice({
   name: "movies",
   initialState,
   reducers: {
     addToFavoritesList(state, action) {
-      console.log(action)
       state.favorites = [...state.favorites, action.payload];
       state.numberOfFavorites += 1;
     },
