@@ -1,27 +1,69 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import logo from "../../assets/film.png";
 import Button from '../Button/Button';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import image from "../../assets/heart.svg";
+import { useDispatch, useSelector } from 'react-redux';
+import { RootState } from '../../../store/store-types';
+import { AuthorizationContext } from '../../../store/context/context';
+import {setUser} from "../../../store/userSlice/userSlice";
 import "./Header.scss";
 
 const Header = () => {
+  const { numberOfFavorites } = useSelector((state: RootState) => state.movies);
+  const { login, password } = useContext(AuthorizationContext);
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const signoutHandler = () => {
+    dispatch(setUser(""));
+    navigate("/signin");
+  }
+
   return (
     <header className="header">
       <div className="logo">
         <img src={logo} alt="icon" />
       </div>
-      <div className="buttons-container">
-        <div className="button-signin">
-          <Link to="/signin">
-            <Button>Вход</Button>
-          </Link>
-        </div>
-        <div className="button-signup">
-          <Link to="/signup">
-            <Button>Регистрация</Button>
-          </Link>
-        </div>
-      </div>
+      {/*// TODO Избранное и история всегда видны как две кнопки в хэдере -> но роуты будут приватные - с хуком useAuth*/}
+          <div className="buttons-container">
+            <Link to="/favorites">
+              <div className="heart-block">
+                <img
+                  src={image}
+                  alt="favorite"
+                  width="40"
+                  height="40"
+                  className="favorite-img"
+                />
+                <span className="heart-container">
+                  <span className="heart-number">{numberOfFavorites}</span>
+                </span>
+              </div>
+            </Link>
+            <Link to="/history">
+              <div className="history">
+                История
+              </div>
+            </Link>
+            {(login && password) ? (
+              <div className="button-signin">
+                  <Button onClick={signoutHandler}>Выход</Button>
+              </div>
+            ) : (
+              <div>
+                <div className="button-signin">
+                  <Link to="/signin">
+                    <Button>Вход</Button>
+                  </Link>
+                </div>
+                <div className="button-signup">
+                  <Link to="/signup">
+                    <Button>Регистрация</Button>
+                  </Link>
+                </div>
+              </div>
+            )}
+          </div>
     </header>
   );
 };

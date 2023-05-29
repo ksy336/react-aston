@@ -6,9 +6,12 @@ import Button from '../../components/Button/Button';
 import { useForm } from 'react-hook-form';
 import { Link, useNavigate } from 'react-router-dom';
 import { AuthorizationContext } from '../../../store/context/context';
+import {setUser} from "../../../store/userSlice/userSlice";
+import { useDispatch } from 'react-redux';
 
 const SignIn = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const {handleSubmit, register, reset, formState: {errors}} = useForm({mode: "onChange"});
   const {login, password} = useContext(AuthorizationContext);
   const [confirmPassword, setConfirmPassword] = useState("");
@@ -17,6 +20,9 @@ const SignIn = () => {
 
   const formSigninHandle = () => {
     if(confirmPassword === password && confirmLogin === login) {
+      // TODO сохрнить пользователя в редаксе
+      dispatch(setUser(login));
+
       navigate("/movie");
     } else {
       setIsNotMatch(true);

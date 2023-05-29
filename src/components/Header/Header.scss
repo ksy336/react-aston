@@ -14,3 +14,37 @@
 .buttons-container > * {
   margin-right: 40px;
 }
+.heart-block {
+  margin-right: 25px;
+  position: relative;
+  cursor: pointer;
+}
+
+.heart-block:active,
+.heart-block:hover {
+  transform: scale(0.9);
+}
+.heart-number {
+  font-family: 'Montserrat', sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 15px;
+  line-height: 18px;
+  text-align: center;
+  color: #FFFFFF;
+}
+.heart-container {
+  width: 18px;
+  height: 18px;
+  background-color: black;
+  border-radius: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: -9px;
+  left: 24px;
+  color: #FFFFFF;
+  cursor: pointer;
+}
+

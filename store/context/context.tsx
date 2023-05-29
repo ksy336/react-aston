@@ -25,6 +25,7 @@ const ContextProvider = ({children}: ContextProps) => {
     JSON.stringify(localStorage.setItem("password", password));
   }, [password]);
 
+
   return (
     <AuthorizationContext.Provider value={{login, password, setLogin, setPassword}}>
       {children}
