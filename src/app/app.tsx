@@ -5,7 +5,7 @@ import SignUp from '../pages/SignUp/SignUp';
 import SignIn from '../pages/SignIn/SignIn';
 import MoviePage from '../pages/MoviePage/MoviePage';
 import FavoritesPage from '../pages/FavoritesPage/FavoritesPage';
-
+import { RequireAuth } from "../hoc/RequireAuth";
 
 export function App() {
   return (
@@ -16,7 +16,11 @@ export function App() {
           <Route path="/signup" element={<SignUp />} />
           <Route path="/signin" element={<SignIn />} />
           <Route path="/movie" element={<MoviePage />} />
-          <Route path="/favorites" element={<FavoritesPage />} />
+          <Route path="/favorites" element={
+            <RequireAuth>
+              <FavoritesPage />
+            </RequireAuth>
+          } />
         </Routes>
       </BrowserRouter>
     </div>

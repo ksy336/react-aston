@@ -9,12 +9,12 @@ export const movieSlice = createSlice({
   name: "movies",
   initialState,
   reducers: {
-    addToFavoritesList(state, action) {
-      state.favorites.push(action.payload);
+    addToFavoritesList(state,{ payload }) {
+      state.favorites.push(payload);
       state.numberOfFavorites += 1;
     },
-    removeFromFavorites(state, action) {
-      state.favorites = state.favorites.filter((item) => item.id !== action.payload.id);
+    removeFromFavorites(state, { payload }) {
+      state.favorites = state.favorites.filter((item) => item.id !== payload.id);
       if (state.numberOfFavorites < 1) return;
       state.numberOfFavorites -= 1;
     }

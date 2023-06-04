@@ -20,9 +20,7 @@ const SignIn = () => {
 
   const formSigninHandle = () => {
     if(confirmPassword === password && confirmLogin === login) {
-      // TODO сохрнить пользователя в редаксе
       dispatch(setUser(login));
-
       navigate("/movie");
     } else {
       setIsNotMatch(true);
