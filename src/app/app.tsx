@@ -12,10 +12,10 @@ export function App() {
     <div className="wrapper">
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<HomePage />} />
+          <Route path="/" element={<MoviePage />} />
           <Route path="/signup" element={<SignUp />} />
           <Route path="/signin" element={<SignIn />} />
-          <Route path="/movie" element={<MoviePage />} />
+          {/*<Route path="/movie" element={<MoviePage />} />*/}
           <Route path="/favorites" element={
             <RequireAuth>
               <FavoritesPage />

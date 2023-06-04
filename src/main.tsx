@@ -2,7 +2,8 @@ import * as ReactDOM from 'react-dom/client';
 import App from './app/app';
 import { ContextProvider } from '../store/context/context';
 import { Provider } from 'react-redux';
-import store from '../store/store';
+import { PersistGate } from 'redux-persist/integration/react';
+import store, { persistor } from '../store/store';
 import "./styles.scss";
 
 const root = ReactDOM.createRoot(
@@ -10,8 +11,10 @@ const root = ReactDOM.createRoot(
 );
 root.render(
   <Provider store={store}>
-    <ContextProvider>
-      <App />
-    </ContextProvider>
+    <PersistGate loading={null} persistor={persistor}>
+      <ContextProvider>
+        <App />
+      </ContextProvider>
+    </PersistGate>
   </Provider>
 );
