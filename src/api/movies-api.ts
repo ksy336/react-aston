@@ -11,8 +11,27 @@ class MoviesApi {
       }
     }
     const response = await axios.get(`${BASE_URL}/movie/now_playing?language=en-US&page=${page}`, options);
+
     try {
       const data = response.data.results;
+      return data;
+    } catch(e) {
+      throw new Error();
+    }
+  }
+
+  async searchMovies(query) {
+    const options = {
+      headers: {
+        Authorization: `Bearer ${BASE_API_KEY}`,
+        Accept: 'application/json',
+      }
+    }
+    const response = await axios.get(`${BASE_URL}/search/movie?query=${query}&include_adult=false&language=en-US`, options);
+    // /search/movie?query=anime&include_adult=false&language=en-US&page=1'
+    try {
+      const data = response.data.results;
+      console.log(data);
       return data;
     } catch(e) {
       throw new Error();
