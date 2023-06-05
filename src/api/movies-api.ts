@@ -28,10 +28,9 @@ class MoviesApi {
       }
     }
     const response = await axios.get(`${BASE_URL}/search/movie?query=${query}&include_adult=false&language=en-US`, options);
-    // /search/movie?query=anime&include_adult=false&language=en-US&page=1'
+
     try {
       const data = response.data.results;
-      console.log(data);
       return data;
     } catch(e) {
       throw new Error();
