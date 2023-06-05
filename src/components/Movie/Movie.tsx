@@ -22,7 +22,7 @@ const Movie = ({movie}: MovieProp) => {
       <div className="movie-image">
         <img src={`https://www.themoviedb.org/t/p/original${movie.backdrop_path}`} alt="poster" />
       </div>
-      <div>Популярность: {movie.popularity}</div>
+      <div>Популярность: {movie.popularity?.toFixed(0)}</div>
       <div>Дата релиза: {movie.release_date}</div>
       <div>Средний рейтинг: {movie.vote_average}</div>
       {!favorites?.includes(movie) ? (

@@ -8,6 +8,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { AuthorizationContext } from '../../../store/context/context';
 import {setUser} from "../../../store/userSlice/userSlice";
 import { useDispatch } from 'react-redux';
+import openNotification from '../../helpers/notification';
 
 const SignIn = () => {
   const navigate = useNavigate();
@@ -20,9 +21,11 @@ const SignIn = () => {
 
   const formSigninHandle = () => {
     if(confirmPassword === password && confirmLogin === login) {
+      openNotification("success", "Вы успешно вошли!")
       dispatch(setUser(login));
-      navigate("/movie");
+      navigate("/");
     } else {
+      openNotification("error", "Произошла ошибка. Попробуйте еще раз!")
       setIsNotMatch(true);
     }
     reset();
