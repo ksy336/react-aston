@@ -7,6 +7,7 @@ import { useForm } from 'react-hook-form';
 import { Link, useNavigate } from 'react-router-dom';
 import { AuthorizationContext } from '../../../store/context/context';
 import"./Signup.scss";
+import openNotification from '../../helpers/notification';
 
 type FormData = {
   login: string;
@@ -18,8 +19,13 @@ const SignUp = () => {
   const navigate = useNavigate();
   const {setLogin, setPassword} = useContext(AuthorizationContext);
   const formSubmit = () => {
-    navigate("/signin");
-    reset();
+    try {
+      openNotification("success", "Вы успешно зарегистрированы!")
+      navigate("/signin");
+      reset();
+    } catch(e) {
+      openNotification("error", "Произошла ошибка! Попробуйте позже." )
+    }
   }
 
   return (

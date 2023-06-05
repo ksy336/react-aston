@@ -10,9 +10,13 @@
 .buttons-container {
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 .buttons-container > * {
   margin-right: 40px;
+}
+.button-signin {
+  margin-right: 0;
 }
 .heart-block {
   margin-right: 25px;
@@ -20,10 +24,6 @@
   cursor: pointer;
 }
 
-.heart-block:active,
-.heart-block:hover {
-  transform: scale(0.9);
-}
 .heart-number {
   font-family: 'Montserrat', sans-serif;
   font-style: normal;
@@ -46,5 +46,20 @@
   left: 24px;
   color: #FFFFFF;
   cursor: pointer;
+}
+.history-link {
+  text-decoration: none;
+}
+.history {
+  color: white;
+  font-size: 20px;
+  cursor: pointer;
+  text-decoration: none;
+}
+.heart-block:active,
+.heart-block:hover,
+.history:active,
+.history:hover {
+  transform: scale(0.9);
 }
 

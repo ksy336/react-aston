@@ -21,11 +21,12 @@ const Header = () => {
 
   return (
     <header className="header">
-      <div className="logo">
-        <img src={logo} alt="icon" />
-      </div>
-      {/*// TODO Избранное и история всегда видны как две кнопки в хэдере -> но роуты будут приватные - с хуком useAuth*/}
-          <div className="buttons-container">
+      <Link to="/">
+        <div className="logo">
+          <img src={logo} alt="icon" />
+        </div>
+      </Link>
+      <div className="buttons-container">
             <Link to="/favorites">
               <div className="heart-block">
                 <img
@@ -40,7 +41,7 @@ const Header = () => {
                 </span>
               </div>
             </Link>
-            <Link to="/history">
+            <Link to="/history" className="history-link">
               <div className="history">
                 История
               </div>
