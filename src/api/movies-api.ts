@@ -36,6 +36,23 @@ class MoviesApi {
       throw new Error();
     }
   }
+
+  async getMovieById(id) {
+    const options = {
+      headers: {
+        Authorization: `Bearer ${BASE_API_KEY}`,
+        Accept: 'application/json',
+      }
+    }
+    const response = await axios.get(`${BASE_URL}/movie/${id}?language=en-US`, options);
+    try {
+      const data = response.data;
+      console.log(data);
+      return data;
+    } catch(e) {
+      throw new Error(e);
+    }
+  }
 }
 const moviesApi = new MoviesApi()
 export default moviesApi;

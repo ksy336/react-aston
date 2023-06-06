@@ -12,9 +12,12 @@
   background-blend-mode: normal;
   cursor: pointer;
   border-radius: 5px;
+  text-decoration: none;
+  color:black;
 }
 .movie-container > * {
   margin-bottom: 7px;
+  text-decoration: none;
 }
 .movie-container:hover {
   transform: scale(.99);
@@ -27,12 +30,14 @@
 .movie-overview {
   font-size: 1.2rem;
   line-height: 1.2rem;
+  text-decoration: none;
 }
 .movie-title {
   font-size: 1.7rem;
   line-height: 1.7rem;
   font-weight: bold;
   text-align: center;
+  text-decoration: none;
 }
 .favorite-img {
   cursor: pointer;

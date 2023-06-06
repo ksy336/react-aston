@@ -5,4 +5,5 @@ export type MovieState = {
   numberOfFavorites: number;
   searchQuery: string;
   moviesBySearch: MovieItem[];
+  movieId: number | string;
 }

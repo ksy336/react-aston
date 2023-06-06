@@ -6,6 +6,7 @@ const initialState: MovieState = {
   numberOfFavorites: 0,
   searchQuery: "",
   moviesBySearch: [],
+  movieId: ''
 }
 export const movieSlice = createSlice({
   name: "movies",
@@ -25,10 +26,13 @@ export const movieSlice = createSlice({
     },
     setMoviesBySearch(state, { payload }) {
       state.moviesBySearch = payload;
+    },
+    getMovieId(state, {payload}) {
+      state.movieId = payload;
     }
   }
 });
 
-export const { removeFromFavorites, addToFavoritesList, findMovieBySearchQuery, setMoviesBySearch} = movieSlice.actions;
+export const { removeFromFavorites, addToFavoritesList, findMovieBySearchQuery, setMoviesBySearch, getMovieId} = movieSlice.actions;
 
 export default movieSlice.reducer;

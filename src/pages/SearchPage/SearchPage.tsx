@@ -20,7 +20,6 @@ const SearchPage = () => {
       },
     ]}
     />
-    {/*<SearchComponent fetchMovies={fetchMoviesBySearchParameter} />*/}
     <h2 className="search-text">Результаты поиска</h2>
     <div className="search-container">
       {moviesBySearch?.map((movie) => (

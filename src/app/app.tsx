@@ -6,6 +6,7 @@ import MoviePage from '../pages/MoviePage/MoviePage';
 import FavoritesPage from '../pages/FavoritesPage/FavoritesPage';
 import { RequireAuth } from "../hoc/RequireAuth";
 import SearchPage from '../pages/SearchPage/SearchPage';
+import DetailPage from '../pages/DetailPage/DetailPage';
 
 export function App() {
   return (
@@ -14,6 +15,7 @@ export function App() {
         <Routes>
           <Route path="/" element={<MoviePage />} />
           <Route path="/search" element={<SearchPage />}/>
+          <Route path="/detail" element={<DetailPage />} />
           <Route path="/signup" element={<SignUp />} />
           <Route path="/signin" element={<SignIn />} />
           <Route path="/favorites" element={
