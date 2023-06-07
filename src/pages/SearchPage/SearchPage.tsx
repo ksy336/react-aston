@@ -4,6 +4,7 @@ import { Breadcrumb } from 'antd';
 import MovieMemo from '../../components/Movie/Movie';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../../store/store-types';
+import Layout from '../../components/Layout/Layout';
 import "./SearchPage.scss";
 
 
@@ -12,14 +13,7 @@ const SearchPage = () => {
 
   return (
     <>
-    <Header />
-    <Breadcrumb
-      items={[
-      {
-        title: <a href="/">Home</a>,
-      },
-    ]}
-    />
+    <Layout />
     <h2 className="search-text">Результаты поиска</h2>
     <div className="search-container">
       {moviesBySearch?.map((movie) => (

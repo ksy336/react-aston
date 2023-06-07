@@ -12,10 +12,12 @@ import storage from 'redux-persist/lib/storage';
 import { configureStore, combineReducers, getDefaultMiddleware } from '@reduxjs/toolkit';
 import moviesReducer from "./movieSlice/movieSlice";
 import userReducer from "./userSlice/userSlice";
+import historyReducer from "./historySlice/historySlice";
 
 const rootReducer = combineReducers({
   movies: moviesReducer,
   user: userReducer,
+  history: historyReducer,
 })
 const persistConfig = {
   key: "root",

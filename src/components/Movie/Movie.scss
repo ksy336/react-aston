@@ -22,6 +22,9 @@
 .movie-container:hover {
   transform: scale(.99);
 }
+.container-without-hover:hover {
+  transform: none !important;
+}
 .movie-image img {
   width: 100%;
   max-width: 300px;

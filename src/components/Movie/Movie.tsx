@@ -25,14 +25,16 @@ const Movie = ({movie}: MovieProp) => {
   }
 
   return (
-      <article className="movie-container" onClick={goToDetailPage}>
-        <div className="movie-title">{movie.title}</div>
-        <div className="movie-image">
-          <img src={`https://www.themoviedb.org/t/p/original${movie.backdrop_path}`} alt="poster" />
-        </div>
-        <div>Популярность: {movie.popularity?.toFixed(0)}</div>
-        <div>Дата релиза: {movie.release_date}</div>
-        <div>Средний рейтинг: {movie.vote_average?.toFixed(0)}</div>
+      <article className="movie-container">
+        <section className="movie-container container-without-hover" onClick={goToDetailPage}>
+          <div className="movie-title">{movie.title}</div>
+          <div className="movie-image">
+            <img src={`https://www.themoviedb.org/t/p/original${movie.backdrop_path}`} alt="poster" />
+          </div>
+          <div>Популярность: {movie.popularity?.toFixed(0)}</div>
+          <div>Дата релиза: {movie.release_date}</div>
+          <div>Средний рейтинг: {movie.vote_average?.toFixed(0)}</div>
+        </section>
         {!favorites?.includes(movie) ? (
           <img
             src={image}

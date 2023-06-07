@@ -7,6 +7,7 @@ import FavoritesPage from '../pages/FavoritesPage/FavoritesPage';
 import { RequireAuth } from "../hoc/RequireAuth";
 import SearchPage from '../pages/SearchPage/SearchPage';
 import DetailPage from '../pages/DetailPage/DetailPage';
+import HistoryPage from '../pages/HistoryPage/HistoryPage';
 
 export function App() {
   return (
@@ -21,6 +22,11 @@ export function App() {
           <Route path="/favorites" element={
             <RequireAuth>
               <FavoritesPage />
+            </RequireAuth>
+          } />
+          <Route path="/history" element={
+            <RequireAuth>
+              <HistoryPage />
             </RequireAuth>
           } />
         </Routes>

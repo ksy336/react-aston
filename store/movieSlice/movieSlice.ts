@@ -3,10 +3,11 @@ import { MovieState } from './movieSlice-types';
 
 const initialState: MovieState = {
   favorites: [],
+  // moviesForHistory: [],
   numberOfFavorites: 0,
   searchQuery: "",
   moviesBySearch: [],
-  movieId: ''
+  movieId: '',
 }
 export const movieSlice = createSlice({
   name: "movies",
@@ -27,6 +28,9 @@ export const movieSlice = createSlice({
     setMoviesBySearch(state, { payload }) {
       state.moviesBySearch = payload;
     },
+    // saveMoviesForHistory(state, {payload}) {
+    //   state.moviesForHistory.push(payload);
+    // },
     setMovieId(state, {payload}) {
       state.movieId = payload;
     }

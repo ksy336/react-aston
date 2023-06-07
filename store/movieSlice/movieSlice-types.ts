@@ -6,4 +6,5 @@ export type MovieState = {
   searchQuery: string;
   moviesBySearch: MovieItem[];
   movieId: number | string;
+  // moviesForHistory: MovieItem[];
 }

@@ -2,8 +2,7 @@ import React from 'react';
 import { RootState } from '../../../store/store-types';
 import { useSelector } from 'react-redux';
 import MovieMemo from '../../components/Movie/Movie';
-import Header from '../../components/Header/Header';
-import {Breadcrumb} from 'antd';
+import Layout from '../../components/Layout/Layout';
 import "./FavoritesPage.scss";
 
 const FavoritesPage = () => {
@@ -11,14 +10,7 @@ const FavoritesPage = () => {
 
   return (
     <>
-      <Header />
-      <Breadcrumb
-        items={[
-          {
-            title: <a href="/">Home</a>,
-          },
-        ]}
-      />
+      <Layout />
       <h2 className="favorite-text">Избранное</h2>
     <div className="favorite-container">
       {favorites?.map((movie) => (

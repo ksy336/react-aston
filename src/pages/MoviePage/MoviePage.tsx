@@ -8,6 +8,7 @@ import { MovieItem } from './MoviePage-Types';
 import MovieMemo from '../../components/Movie/Movie';
 import SearchComponent from '../../components/SearchComponent/SearchComponent';
 import { setMoviesBySearch } from '../../../store/movieSlice/movieSlice';
+import {saveMoviesForHistory} from "../../../store/historySlice/historySlice";
 import "./MoviePage.scss";
 
 const MoviePage = () => {
@@ -29,6 +30,7 @@ const MoviePage = () => {
   const fetchMoviesBySearchParameter = async () => {
     const movies = await moviesApi.searchMovies(searchQuery);
     dispatch(setMoviesBySearch(movies));
+    dispatch(saveMoviesForHistory(movies));
     navigate(`/search?${searchQuery}`);
   }
 
