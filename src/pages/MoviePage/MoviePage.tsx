@@ -29,7 +29,7 @@ const MoviePage = () => {
   const fetchMoviesBySearchParameter = async () => {
     const movies = await moviesApi.searchMovies(searchQuery);
     dispatch(setMoviesBySearch(movies));
-    navigate('/search');
+    navigate(`/search?${searchQuery}`);
   }
 
   return (
