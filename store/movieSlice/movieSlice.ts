@@ -33,6 +33,6 @@ export const movieSlice = createSlice({
   }
 });
 
-export const { removeFromFavorites, addToFavoritesList, findMovieBySearchQuery, setMoviesBySearch, getMovieId} = movieSlice.actions;
+export const { removeFromFavorites, addToFavoritesList, findMovieBySearchQuery, setMoviesBySearch, setMovieId} = movieSlice.actions;
 
 export default movieSlice.reducer;

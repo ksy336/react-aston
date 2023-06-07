@@ -4,6 +4,9 @@
   align-items: center;
   flex-wrap: wrap;
 }
+.favorite-container > * {
+  margin-bottom: 20px;
+}
 .favorite-text {
   color: white;
   font-size: 20px;
