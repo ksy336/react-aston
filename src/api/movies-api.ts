@@ -11,13 +11,9 @@ class MoviesApi {
       }
     }
     const response = await axios.get(`${BASE_URL}/movie/now_playing?language=en-US&page=${page}`, options);
+    const data = response?.data?.results;
 
-    try {
-      const data = response.data.results;
-      return data;
-    } catch(e) {
-      throw new Error();
-    }
+    return data;
   }
 
   async searchMovies(query) {
@@ -28,13 +24,9 @@ class MoviesApi {
       }
     }
     const response = await axios.get(`${BASE_URL}/search/movie?query=${query}&include_adult=false&language=en-US`, options);
+    const data = response?.data?.results;
 
-    try {
-      const data = response.data.results;
-      return data;
-    } catch(e) {
-      throw new Error();
-    }
+    return data;
   }
 
   async getMovieById(id) {
@@ -45,13 +37,9 @@ class MoviesApi {
       }
     }
     const response = await axios.get(`${BASE_URL}/movie/${id}?language=en-US`, options);
-    try {
-      const data = response.data;
-      console.log(data);
-      return data;
-    } catch(e) {
-      throw new Error(e);
-    }
+    const data = response.data;
+
+    return data;
   }
 }
 const moviesApi = new MoviesApi()

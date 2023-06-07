@@ -27,7 +27,7 @@ export const movieSlice = createSlice({
     setMoviesBySearch(state, { payload }) {
       state.moviesBySearch = payload;
     },
-    getMovieId(state, {payload}) {
+    setMovieId(state, {payload}) {
       state.movieId = payload;
     }
   }
