@@ -8,13 +8,15 @@ import { RequireAuth } from "../hoc/RequireAuth";
 import SearchPage from '../pages/SearchPage/SearchPage';
 import DetailPage from '../pages/DetailPage/DetailPage';
 import HistoryPage from '../pages/HistoryPage/HistoryPage';
+import HomePage from "../pages/HomePage/HomePage";
 
 export function App() {
   return (
     <div className="wrapper">
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<MoviePage />} />
+          <Route path="/movie" element={<MoviePage />} />
+          <Route path="/" element={<HomePage />} />
           <Route path="/search" element={<SearchPage />}/>
           <Route path="/detail" element={<DetailPage />} />
           <Route path="/signup" element={<SignUp />} />
