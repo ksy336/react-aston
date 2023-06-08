@@ -42,9 +42,9 @@ const Header = () => {
               </div>
             </Link>
             <Link to="/history" className="history-link">
-              <div className="history">
+              <Button className="history">
                 История
-              </div>
+              </Button>
             </Link>
             {(login && password) ? (
               <div className="button-signin">

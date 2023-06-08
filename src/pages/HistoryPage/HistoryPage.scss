@@ -1,0 +1,8 @@
+.history-title {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+.history-title >* {
+  flex-basis: 25%;
+}
