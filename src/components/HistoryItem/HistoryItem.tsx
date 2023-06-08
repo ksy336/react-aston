@@ -9,7 +9,7 @@ const HistoryItem = ({movie}: MovieHistoryProp) => {
     <>
     <article>
       <div>{movie.title}</div>
-      <div></div>
+      <div>{movie.releaseDate}</div>
     </article>
       </>
   );
