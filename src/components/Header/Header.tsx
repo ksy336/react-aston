@@ -51,7 +51,7 @@ const Header = () => {
                   <Button onClick={signoutHandler}>Выход</Button>
               </div>
             ) : (
-              <div>
+              <div className="login-buttons">
                 <div className="button-signin">
                   <Link to="/signin">
                     <Button>Вход</Button>

@@ -63,3 +63,12 @@
   transform: scale(0.9);
 }
 
+.login-buttons{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.button-signin {
+  margin-right: 30px;
+}
+
