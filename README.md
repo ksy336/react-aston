@@ -1,3 +1,3 @@
 # ReactAston
 
-https://movies-klimova.netlify.app/ - ссылка на сайт
+https://klimova-movies.netlify.app/ - ссылка на сайт
