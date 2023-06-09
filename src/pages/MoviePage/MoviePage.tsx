@@ -9,6 +9,7 @@ import MovieMemo from '../../components/Movie/Movie';
 import SearchComponent from '../../components/SearchComponent/SearchComponent';
 import { setMoviesBySearch } from '../../../store/movieSlice/movieSlice';
 import {saveMoviesForHistory} from "../../../store/historySlice/historySlice";
+import Button from "../../components/Button/Button";
 import Pagination from '../../components/Pagination/Pagination';
 import "./MoviePage.scss";
 
@@ -18,7 +19,7 @@ const MoviePage = () => {
   const [listMovies, setListMovies] = useState<MovieItem>([]);
   const [page, setPage] = useState(1);
   const {searchQuery} = useSelector((state: RootState) => state.movies);
-  // const [moviesPerPage] = useState(19);
+  const [visible, setVisible] = useState(20);
 
   const fetchDataFromApi = async () => {
     const movieData = await moviesApi.getAllMovies(page);
@@ -28,23 +29,24 @@ const MoviePage = () => {
     fetchDataFromApi();
   }, []);
 
+  const showMoreMovies = async () => {
+    setPage((prev: number) => {
+      return prev + 1;
+    })
+    await fetchDataFromApi();
+
+    setVisible((prev: number) => {
+      return prev + 20;
+    })
+  }
+
   const fetchMoviesBySearchParameter = async () => {
     const movies = await moviesApi.searchMovies(searchQuery);
-    setListMovies(movies);
     dispatch(setMoviesBySearch(movies));
     dispatch(saveMoviesForHistory(movies));
     navigate(`/search?${searchQuery}`);
   }
-  // Get  current league
-  // const indexOfLastMovie = page * moviesPerPage; // 19
-  // const indexOfFirstMovie = indexOfLastMovie - moviesPerPage; // 0
-  // const currentMovies = listMovies?.slice(indexOfFirstMovie, indexOfLastMovie); // 0-19
-  //
-  // // Change page
-  // const paginate = async (number) => {
-  //   setPage(number);
-  //   await moviesApi.getAllMovies(page)
-  // }
+
 
   return (
     <>
@@ -60,8 +62,14 @@ const MoviePage = () => {
           />
         ))}
       </section>
-      {/*<Pagination paginate={paginate} moviesPerPage={currentMovies.length} totalMovies={listMovies?.length} />*/}
-    </>
+      <div className="button-toloadmore-movies">
+        <Button
+          onClick={showMoreMovies}
+        >
+          Показать больше фильмов
+        </Button>
+      </div>
+      </>
   );
 };
 
