@@ -6,7 +6,7 @@ https://klimova-movies.netlify.app/ - ссылка на сайт
  - Реализованы Требования к функциональности, описанные в прикрепленном документе: ✔️
  - React
 1. Пишем функциональные компоненты c хуками в приоритете над классовыми: https://github.com/ksy336/react-aston/blob/c7a75d660e6f23f855e40d876e79dc052eca4b44/src/pages/MoviePage/MoviePage.tsx#L17-L22
-2. Есть четкое разделение на умные и глупые компоненты: ✔️ Умный , Глупый
+2. Есть четкое разделение на умные и глупые компоненты:  Умный: https://github.com/ksy336/react-aston/blob/c423b4af880c2442358aa3f51799ec913ac2efab/src/components/Movie/Movie.tsx#L17  , Глупый: https://github.com/ksy336/react-aston/blob/c423b4af880c2442358aa3f51799ec913ac2efab/src/components/Button/Button.tsx#L9
 3. Есть рендеринг списков: ✔️ Рендер списка
 4. Реализована хотя бы одна форма: ✔️Две формы регистрации и логина
 5. Есть применение Контекст API: ✔️ FeatureFlagProvider
