@@ -3,7 +3,6 @@ import { MovieState } from './movieSlice-types';
 
 const initialState: MovieState = {
   favorites: [],
-  // moviesForHistory: [],
   numberOfFavorites: 0,
   searchQuery: "",
   moviesBySearch: [],
@@ -13,12 +12,12 @@ export const movieSlice = createSlice({
   name: "movies",
   initialState,
   reducers: {
-    addToFavoritesList(state,{ payload }) {
-      state.favorites.push(payload);
+    addToFavoritesList(state, { payload }) {
+      state.favorites.push(payload.id);
       state.numberOfFavorites += 1;
     },
-    removeFromFavorites(state, { payload }) {
-      state.favorites = state.favorites.filter((item) => item.id !== payload.id);
+    removeFromFavorites(state, action ) {
+      state.favorites = state.favorites.filter((id) => id !== action.payload.id);
       if (state.numberOfFavorites < 1) return;
       state.numberOfFavorites -= 1;
     },
@@ -28,9 +27,6 @@ export const movieSlice = createSlice({
     setMoviesBySearch(state, { payload }) {
       state.moviesBySearch = payload;
     },
-    // saveMoviesForHistory(state, {payload}) {
-    //   state.moviesForHistory.push(payload);
-    // },
     setMovieId(state, {payload}) {
       state.movieId = payload;
     }

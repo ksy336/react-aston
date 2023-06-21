@@ -7,20 +7,21 @@ class MoviesApi {
     const options = {
       headers: {
         Authorization: `Bearer ${BASE_API_KEY}`,
-        Accept: 'application/json',
+        accept: 'application/json',
+        'Content-Type': 'application/json',
       }
     }
-    const response = await axios.get(`${BASE_URL}/movie/now_playing?language=en-US&page=${page}`, options);
-    const data = response?.data?.results;
-
-    return data;
+    const response = await fetch(`${BASE_URL}/movie/now_playing?language=en-US&page=${page}`, options);
+    const data = await response.json();
+    const results = data?.results;
+    return results;
   }
 
   async searchMovies(query) {
     const options = {
       headers: {
         Authorization: `Bearer ${BASE_API_KEY}`,
-        Accept: 'application/json',
+        accept: 'application/json',
       }
     }
     const response = await axios.get(`${BASE_URL}/search/movie?query=${query}&include_adult=false&language=en-US`, options);
@@ -33,7 +34,7 @@ class MoviesApi {
     const options = {
       headers: {
         Authorization: `Bearer ${BASE_API_KEY}`,
-        Accept: 'application/json',
+        accept: 'application/json',
       }
     }
     const response = await axios.get(`${BASE_URL}/movie/${id}?language=en-US`, options);

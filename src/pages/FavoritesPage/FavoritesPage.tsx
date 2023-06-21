@@ -15,7 +15,7 @@ const FavoritesPage = () => {
     <div className="favorite-container">
       {favorites?.map((movie) => (
         <MovieMemo
-          key={movie.id}
+          key={movie?.id}
           movie={movie}
         />
       ))}
