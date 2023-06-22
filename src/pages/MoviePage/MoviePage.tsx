@@ -20,6 +20,7 @@ const MoviePage = () => {
 
   const {data: movies} = useGetAllMoviesQuery(page);
   const {data: searchMovies } = useSearchMoviesQuery(searchQuery);
+
   const showMoreMovies = async () => {
     setPage((prev: number) => {
       return prev + 1;

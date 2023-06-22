@@ -15,13 +15,14 @@ const DetailPage = () => {
     setMovies([movieByIdData]);
   }, []);
 
+
   return (
     <>
      <Layout />
     <div className="detail-container">
       {movies?.map((movie) => (
         <DetailMovie
-          key={movie.id}
+          key={movie?.id}
           movie={movie}
         />
       ))}

@@ -20,7 +20,6 @@ const Movie = ({movie}: MovieProp) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const {favorites} = useSelector((state: RootState) => state.movies);
-  console.log(favorites, movie)
 
   const goToDetailPage = () => {
     navigate("/detail");

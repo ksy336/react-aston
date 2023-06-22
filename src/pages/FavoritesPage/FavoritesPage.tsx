@@ -6,14 +6,14 @@ import Layout from '../../components/Layout/Layout';
 import "./FavoritesPage.scss";
 
 const FavoritesPage = () => {
-  const { favorites } = useSelector((state: RootState) => state.movies);
+  const { favoriteMoviesList } = useSelector((state: RootState) => state.favoriteMovies);
 
   return (
     <>
       <Layout />
       <h2 className="favorite-text">Избранное</h2>
     <div className="favorite-container">
-      {favorites?.map((movie) => (
+      {favoriteMoviesList?.map((movie) => (
         <MovieMemo
           key={movie?.id}
           movie={movie}
