@@ -9,6 +9,8 @@ import { setMoviesBySearch } from '../../../store/movieSlice/movieSlice';
 import {saveMoviesForHistory} from "../../../store/historySlice/historySlice";
 import Button from "../../components/Button/Button";
 import { useGetAllMoviesQuery, useSearchMoviesQuery } from "../../../store/api/apiSlice";
+import { ErrorBoundary } from 'react-error-boundary';
+import FallbackComponent from '../../components/FallbackComponent/FallbackComponent';
 import "./MoviePage.scss";
 
 const MoviePage = () => {
@@ -43,14 +45,16 @@ const MoviePage = () => {
       <div className="input-for-search">
         <SearchComponent fetchMovies={fetchMoviesBySearchParameter} />
       </div>
-      <section className="movies-block">
-        {movies?.results?.map((movie) => (
-          <MovieMemo
-            key={movie.id}
-            movie={movie}
-          />
-        ))}
-      </section>
+      <ErrorBoundary FallbackComponent={FallbackComponent}>
+        <section className="movies-block">
+          {movies?.results?.map((movie) => (
+            <MovieMemo
+              key={movie.id}
+              movie={movie}
+            />
+          ))}
+        </section>
+      </ErrorBoundary>
       <div className="button-toloadmore-movies">
         <Button
           onClick={showMoreMovies}
